@@ -20,6 +20,7 @@ class PermissionController extends ApiController
      *
      * @param ApiPermission $permission
      */
+
     public function __construct(ApiPermission $permission)
     {
         $this->permission = $permission;
@@ -28,7 +29,6 @@ class PermissionController extends ApiController
 //        $this->middleware('permission_guard');
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +36,7 @@ class PermissionController extends ApiController
      * @param PermissionFilter $filters
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
+
     public function index(Request $request, PermissionFilter $filters)
     {
         $permissions = $this->permission->filter($filters)->result();
@@ -50,6 +51,7 @@ class PermissionController extends ApiController
      * @param  \App\Http\Requests\Api\V1\StorePermissionRequest $request
      * @return PermissionResource
      */
+
     public function store(StorePermissionRequest $request)
     {
         $permission = $this->permission->create($request->all());
@@ -57,20 +59,19 @@ class PermissionController extends ApiController
         return new PermissionResource($permission);
     }
 
-
     /**
      * Display the specified resource.
      *
      * @param  int $permission_id
      * @return PermissionResource
      */
+
     public function show($permission_id)
     {
         $permission = $this->permission->findOrFail($permission_id);
 
         return new PermissionResource($permission);
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -79,6 +80,7 @@ class PermissionController extends ApiController
      * @param  int $permission_id
      * @return PermissionResource
      */
+
     public function update(UpdatePermissionRequest $request, $permission_id)
     {
         $permission = $this->permission->findOrFail($permission_id);
@@ -90,13 +92,13 @@ class PermissionController extends ApiController
         return new PermissionResource($permission);
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int $permission_id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($permission_id)
     {
         $permission = $this->permission->findOrFail($permission_id);
